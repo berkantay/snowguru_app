@@ -1,0 +1,36 @@
+
+_getCustomAppBar() {
+  return PreferredSize(
+    preferredSize: Size.fromHeight(50),
+    child: Container(
+      alignment: Alignment.bottomCenter,
+      decoration: BoxDecoration(
+        image: new DecorationImage(
+          image: new AssetImage('img/top_banner.jpg'),
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [new BoxShadow(color: Colors.grey, blurRadius: 10.0)],
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0)),
+      ),
+      child: Stack(
+        children: <Widget>[
+          Container(
+            alignment: Alignment.bottomCenter,
+            color: const Color(0xFF030513).withOpacity(0.3),
+          ),
+          new Text(
+            "KARTALKAYA",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 26,
+              fontFamily: 'DancingScript',
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    ),
+  );
+}
