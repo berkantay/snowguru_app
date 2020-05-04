@@ -20,27 +20,8 @@ class CustomHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _getCustomAppBar(),
-      body: Container(
+      body: Center(
         child: Text('hello'),
-        color: Colors.red,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Business'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
-          ),
-        ],
-        currentIndex: 0,
-        selectedItemColor: Colors.amber[800],
       ),
     );
   }
@@ -90,10 +71,11 @@ _getCustomAppBar() {
                 Text(
                   "KARTALKAYA",
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 26,
-                      fontFamily: 'DancingScript',
-                      letterSpacing: 4),
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontFamily: 'DancingScript',
+                    letterSpacing: 4,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -101,111 +83,4 @@ _getCustomAppBar() {
           )
         ],
       ));
-}
-
-_getNavBar(context) {
-  return Stack(
-    children: <Widget>[
-      Positioned(
-        bottom: 0,
-        child: ClipPath(
-          clipper: NavBarClipper(),
-          child: Container(
-            height: 60,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                  Color(0xFF2c627f),
-                  Color(0xFF030513),
-                ])),
-          ),
-        ),
-      ),
-      Positioned(
-        bottom: 45,
-        width: MediaQuery.of(context).size.width,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            _buildNavItem(Icons.info, true),
-            SizedBox(width: 1),
-            _buildNavItem(Icons.landscape, true),
-            SizedBox(width: 1),
-            _buildNavItem(Icons.brightness_3, true),
-          ],
-        ),
-      ),
-      Positioned(
-        bottom: 10,
-        width: MediaQuery.of(context).size.width,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Text('Pist Durumu',
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
-                    fontWeight: FontWeight.w500)),
-            SizedBox(
-              width: 1,
-            ),
-            Text('Hava durumu',
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
-                    fontWeight: FontWeight.w500)),
-            SizedBox(
-              width: 1,
-            ),
-            Text('Kayis Verilerin',
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
-                    fontWeight: FontWeight.w500)),
-          ],
-        ),
-      )
-    ],
-  );
-}
-
-_buildNavItem(IconData icon, bool active) {
-  return CircleAvatar(
-    radius: 30,
-    backgroundColor: Color(0xFF0a537b),
-    child: CircleAvatar(
-      radius: 25,
-      backgroundColor:
-          active ? Colors.white.withOpacity(0.9) : Colors.transparent,
-      child: Icon(
-        icon,
-        color: active ? Colors.black : Colors.white.withOpacity(0.9),
-      ),
-    ),
-  );
-}
-
-class NavBarClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    var sw = size.width;
-    var sh = size.height;
-
-    path.cubicTo(sw / 12, 0, sw / 12, 2 * sh / 5, 2 * sw / 12, 2 * sh / 5);
-    path.cubicTo(3 * sw / 12, 2 * sh / 5, 3 * sw / 12, 0, 4 * sw / 12, 0);
-    path.cubicTo(
-        5 * sw / 12, 0, 5 * sw / 12, 2 * sh / 5, 6 * sw / 12, 2 * sh / 5);
-    path.cubicTo(7 * sw / 12, 2 * sh / 5, 7 * sw / 12, 0, 8 * sw / 12, 0);
-    path.cubicTo(
-        9 * sw / 12, 0, 9 * sw / 12, 2 * sh / 5, 10 * sw / 12, 2 * sh / 5);
-    path.cubicTo(11 * sw / 12, 2 * sh / 5, 11 * sw / 12, 0, sw, 0);
-    path.lineTo(sw, sh);
-    path.lineTo(0, sh);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
