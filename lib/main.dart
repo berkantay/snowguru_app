@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,19 +19,33 @@ class MyApp extends StatelessWidget {
 class CustomHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var screen_size = MediaQuery.of(context).size;
+    var screen_height = screen_size.height;
     return Scaffold(
+      backgroundColor: Colors.white,
+      extendBodyBehindAppBar: true,
+      body: SnowHome(),
       appBar: _getCustomAppBar(),
-      body: Center(
-        child: Text('hello'),
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 50,
+        index: 2,
+        color: Color(0xFF030513),
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Colors.lightBlueAccent,
+        items: <Widget>[
+          Icon(Icons.verified_user, size: 20, color: Colors.white),
+          Icon(Icons.usb, size: 20, color: Colors.white),
+          Icon(Icons.speaker_notes, size: 20, color: Colors.white),
+          Icon(Icons.menu, size: 20, color: Colors.white),
+          Icon(Icons.add, size: 20, color: Colors.white),
+        ],
+        animationDuration: Duration(
+          milliseconds: 300,
+        ),
+        animationCurve: Curves.elasticOut,
       ),
     );
   }
-}
-
-_getCustomBody() {
-  Center(
-    child: Text('hello'),
-  );
 }
 
 _getCustomAppBar() {
@@ -46,7 +61,7 @@ _getCustomAppBar() {
                 fit: BoxFit.cover,
               ),
               boxShadow: [
-                new BoxShadow(color: Colors.black87, blurRadius: 10.0)
+                new BoxShadow(color: Color(0xFF030513), blurRadius: 3.0)
               ],
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20.0),
@@ -59,7 +74,9 @@ _getCustomAppBar() {
             decoration: BoxDecoration(
               boxShadow: [
                 new BoxShadow(
-                    color: Color(0xFF030513).withOpacity(0.4), blurRadius: 20.0)
+                  color: Color(0xFF030513).withOpacity(0.4),
+                  blurRadius: 20.0,
+                )
               ],
             ),
           ),
@@ -83,4 +100,28 @@ _getCustomAppBar() {
           )
         ],
       ));
+}
+
+class SnowHome extends StatelessWidget {
+  const SnowHome({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: MediaQuery.of(context).size.height / 3,
+          color: Colors.blue,
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height / 3,
+          color: Colors.yellow,
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height / 3 - 50,
+          color: Colors.green,
+        ),
+      ],
+    );
+  }
 }
