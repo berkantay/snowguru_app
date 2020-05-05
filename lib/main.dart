@@ -19,8 +19,6 @@ class MyApp extends StatelessWidget {
 class CustomHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var screen_size = MediaQuery.of(context).size;
-    var screen_height = screen_size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
@@ -107,21 +105,49 @@ class SnowHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: MediaQuery.of(context).size.height / 3,
-          color: Colors.blue,
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height / 3,
-          color: Colors.yellow,
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height / 3 - 50,
-          color: Colors.green,
-        ),
-      ],
+    final weatherSection = new Container(
+      color: Colors.green,
+    );
+    final circuitSection = new Container(
+      color: Colors.yellow,
+    );
+    final skiMapSection = new Container(
+      color: Colors.purple,
+    );
+    final weatherImageSection = new Container(
+      color: Colors.red,
+    );
+    final weatherGraphSection = new Container(
+      color: Colors.blue,
+    );
+
+    return Container(
+      child: new Column(
+        children: <Widget>[
+          Flexible(
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                  flex: 1,
+                  child: weatherImageSection,
+                ),
+                Flexible(
+                  flex: 2,
+                  child: weatherGraphSection,
+                ),
+              ],
+            ),
+          ),
+          Flexible(
+            flex: 1,
+            child: circuitSection,
+          ),
+          Flexible(
+            flex: 1,
+            child: skiMapSection,
+          )
+        ],
+      ),
     );
   }
 }
