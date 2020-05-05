@@ -105,20 +105,20 @@ class SnowHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final weatherSection = new Container(
-      color: Colors.green,
-    );
     final circuitSection = new Container(
       color: Colors.yellow,
     );
     final skiMapSection = new Container(
       color: Colors.purple,
     );
-    final weatherImageSection = new Container(
-      color: Colors.red,
-    );
     final weatherGraphSection = new Container(
       color: Colors.blue,
+    );
+    final weatherIconSection = new Container(
+      color: Colors.green,
+    );
+    final weatherDegree = new Container(
+      color: Colors.orange,
     );
 
     return Container(
@@ -129,7 +129,18 @@ class SnowHome extends StatelessWidget {
               children: <Widget>[
                 Flexible(
                   flex: 1,
-                  child: weatherImageSection,
+                  child: Column(
+                    children: <Widget>[
+                      Flexible(
+                        flex: 3,
+                        child: weatherIconSection,
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: weatherDegree,
+                      )
+                    ],
+                  ),
                 ),
                 Flexible(
                   flex: 2,
