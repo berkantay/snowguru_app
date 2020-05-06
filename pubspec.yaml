@@ -18,6 +18,7 @@ environment:
 
 dependencies:
   curved_navigation_bar:
+  weather_icons: 1.0.1
   flutter:
     sdk: flutter
 
@@ -45,6 +46,7 @@ flutter:
   assets:
    - img/top.jpg
    - img/top_banner.jpg
+   - img/sun.png
    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
