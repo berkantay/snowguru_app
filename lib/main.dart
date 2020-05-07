@@ -24,7 +24,7 @@ class CustomHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.white,
       appBar: _getCustomAppBar(),
       bottomNavigationBar: CurvedNavigationBar(
         height: 50,
@@ -46,21 +46,13 @@ class CustomHomePage extends StatelessWidget {
       ),
       body: Column(children: <Widget>[
         Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.yellowAccent[100],
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-              ),
-            ),
-            child: Column(
-              children: <Widget>[
-                WeatherSection(),
-                CircuitSection(),
-                SkiMapSection()
-              ],
-            ),
+          flex: 1,
+          child: Column(
+            children: <Widget>[
+              WeatherSection(),
+              CircuitSection(),
+              SkiMapSection()
+            ],
           ),
         ),
       ]),
@@ -74,17 +66,17 @@ _getCustomAppBar() {
       child: Stack(
         children: <Widget>[
           Container(
-            color: Colors.red,
+            // color: Colors.red,
             alignment: Alignment.bottomCenter,
-            // decoration: BoxDecoration(
-            //   image: new DecorationImage(
-            //     image: new AssetImage('img/top_banner.jpg'),
-            //     fit: BoxFit.cover,
-            //   ),
-            //   boxShadow: [
-            //     new BoxShadow(color: Color(0xFF030513), blurRadius: 3.0)
-            //   ],
-            // ),
+            decoration: BoxDecoration(
+              image: new DecorationImage(
+                image: new AssetImage('img/top_banner.jpg'),
+                fit: BoxFit.cover,
+              ),
+              boxShadow: [
+                new BoxShadow(color: Color(0xFF030513), blurRadius: 3.0)
+              ],
+            ),
           ),
           Container(
             alignment: Alignment.bottomCenter,
