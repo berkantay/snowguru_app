@@ -8,6 +8,10 @@ class CircuitSection extends StatelessWidget {
     return Expanded(
       child: Container(
         color: Colors.pink,
+        child: Center(
+          child:
+              Text('Snowdata listview such as snow depth, vision, chill etc.'),
+        ),
       ),
     );
   }

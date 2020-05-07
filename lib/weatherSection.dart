@@ -41,10 +41,15 @@ class WeatherSection extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                    ),
-                  ),
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Graphical data of weather wrt hour',
+                          textAlign: TextAlign.center,
+                        ),
+                      )),
                 ),
               ],
             ),

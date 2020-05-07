@@ -8,6 +8,9 @@ class SkiMapSection extends StatelessWidget {
     return Expanded(
       child: Container(
         color: Colors.purple,
+        child: Center(
+          child: Text('Ski map of the ski resort selected.'),
+        ),
       ),
     );
   }
