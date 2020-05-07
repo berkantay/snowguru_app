@@ -28,21 +28,18 @@ class CustomHomePage extends StatelessWidget {
       appBar: _getCustomAppBar(),
       bottomNavigationBar: CurvedNavigationBar(
         height: 50,
-        index: 2,
+        index: 1,
         color: Colors.red,
         backgroundColor: Colors.white,
         buttonBackgroundColor: Colors.lightBlueAccent,
         items: <Widget>[
           Icon(Icons.verified_user, size: 20, color: Colors.white),
           Icon(Icons.usb, size: 20, color: Colors.white),
-          Icon(Icons.speaker_notes, size: 20, color: Colors.white),
-          Icon(Icons.menu, size: 20, color: Colors.white),
-          Icon(Icons.add, size: 20, color: Colors.white),
         ],
         animationDuration: Duration(
           milliseconds: 300,
         ),
-        animationCurve: Curves.elasticOut,
+        animationCurve: Curves.easeOutCubic,
       ),
       body: Column(children: <Widget>[
         Expanded(
