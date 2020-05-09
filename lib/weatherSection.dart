@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_icons/weather_icons.dart';
-import 'package:bezier_chart/bezier_chart.dart';
 
 class WeatherSection extends StatelessWidget {
   @override
@@ -21,19 +20,25 @@ class WeatherSection extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Expanded(
-                          flex: 2,
+                          flex: 3,
                           child: Icon(
                             WeatherIcons.snow,
-                            size: 50.0,
+                            size: 60.0,
                             color: Colors.blue,
                           ),
                         ),
                         Expanded(
                           flex: 1,
-                          child: Text(
-                            '-1\u00b0 Celcius',
-                            style: TextStyle(
-                              fontSize: 18,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: 7.0,
+                            ),
+                            child: Text(
+                              '-1\u00b0 Celcius',
+                              style: const TextStyle(
+                                  color: Color(0xff68737d),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
                             ),
                           ),
                         ),
@@ -46,7 +51,7 @@ class WeatherSection extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(top: 20.0, right: 10.0),
                     child: LineChart(
-                      sampleData1(),
+                      mainData(),
                     ),
                   ),
                 ),
@@ -59,6 +64,100 @@ class WeatherSection extends StatelessWidget {
   }
 }
 
+mainData() {
+  List<Color> gradientColors = [
+    Colors.blue,
+    Colors.greenAccent,
+  ];
+  return LineChartData(
+    gridData: FlGridData(
+      show: false,
+      drawVerticalLine: true,
+    ),
+    titlesData: FlTitlesData(
+      show: true,
+      bottomTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 22,
+        textStyle: const TextStyle(
+            color: Color(0xff68737d),
+            fontWeight: FontWeight.bold,
+            fontSize: 16),
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 2:
+              return '14.00';
+            case 5:
+              return '17.00';
+            case 8:
+              return '20.00';
+          }
+          return '';
+        },
+        margin: 8,
+      ),
+      leftTitles: SideTitles(
+        showTitles: true,
+        textStyle: const TextStyle(
+          color: Color(0xff67727d),
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+        ),
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 0:
+              return '0';
+            case -1:
+              return '-1';
+            case -2:
+              return '-2';
+            case -3:
+              return '-3';
+            case -4:
+              return '-4';
+          }
+          return '';
+        },
+        reservedSize: 28,
+        margin: 12,
+      ),
+    ),
+    borderData: FlBorderData(
+      show: false,
+      border: Border.all(color: const Color(0xff37434d), width: 1),
+    ),
+    minX: 0,
+    maxX: 11,
+    minY: -4,
+    maxY: 0,
+    lineBarsData: [
+      LineChartBarData(
+        spots: [
+          FlSpot(0, -1),
+          FlSpot(2.6, -2),
+          FlSpot(4.9, -1.5),
+          FlSpot(6.8, -3),
+          FlSpot(8, -3.2),
+          FlSpot(9.5, 0),
+          FlSpot(11, -4),
+        ],
+        isCurved: true,
+        colors: gradientColors,
+        barWidth: 5,
+        isStrokeCapRound: true,
+        dotData: FlDotData(
+          show: true,
+        ),
+        belowBarData: BarAreaData(
+          show: true,
+          colors:
+              gradientColors.map((color) => color.withOpacity(0.4)).toList(),
+        ),
+      ),
+    ],
+  );
+}
+
 LineChartData sampleData1() {
   return LineChartData(
     lineTouchData: LineTouchData(
@@ -69,7 +168,8 @@ LineChartData sampleData1() {
       handleBuiltInTouches: true,
     ),
     gridData: FlGridData(
-      show: false,
+      show: true,
+      drawVerticalLine: false,
     ),
     titlesData: FlTitlesData(
       bottomTitles: SideTitles(
