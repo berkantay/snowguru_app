@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_icons/weather_icons.dart';
 import 'package:bezier_chart/bezier_chart.dart';
@@ -12,10 +13,10 @@ class WeatherSection extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Container(
                     child: Column(
                       children: <Widget>[
@@ -24,6 +25,7 @@ class WeatherSection extends StatelessWidget {
                           child: Icon(
                             WeatherIcons.snow,
                             size: 50.0,
+                            color: Colors.blue,
                           ),
                         ),
                         Expanded(
@@ -39,7 +41,15 @@ class WeatherSection extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(flex: 2, child: sample1(context)),
+                Expanded(
+                  flex: 5,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20.0, right: 10.0),
+                    child: LineChart(
+                      sampleData1(),
+                    ),
+                  ),
+                ),
               ],
             ),
           )
@@ -49,63 +59,115 @@ class WeatherSection extends StatelessWidget {
   }
 }
 
-Widget sample1(BuildContext context) {
-  return Center(
-    child: Container(
-      color: Colors.black87,
-      height: MediaQuery.of(context).size.height / 2,
-      width: MediaQuery.of(context).size.width * 0.9,
-      child: BezierChart(
-        bezierChartScale: BezierChartScale.CUSTOM,
-        xAxisCustomValues: const [
-          0,
-          5,
-          10,
-          15,
-          20,
-          25,
-          30,
-          35,
-          45,
-          55,
-          65,
-          75,
-          85,
-          95,
-        ],
-        series: const [
-          BezierLine(
-            data: const [
-              DataPoint<double>(value: 10, xAxis: 0),
-              DataPoint<double>(value: 130, xAxis: 5),
-              DataPoint<double>(value: 50, xAxis: 10),
-              DataPoint<double>(value: 150, xAxis: 15),
-              DataPoint<double>(value: 75, xAxis: 20),
-              DataPoint<double>(value: 0, xAxis: 25),
-              DataPoint<double>(value: 5, xAxis: 30),
-              DataPoint<double>(value: 100, xAxis: 35),
-              DataPoint<double>(value: 98, xAxis: 45),
-              DataPoint<double>(value: 98, xAxis: 55),
-              DataPoint<double>(value: 45, xAxis: 65),
-              DataPoint<double>(value: 41, xAxis: 75),
-              DataPoint<double>(value: 0, xAxis: 85),
-              DataPoint<double>(value: 15, xAxis: 95),
-            ],
-          ),
-        ],
-        config: BezierChartConfig(
-          verticalIndicatorStrokeWidth: 3.0,
-          verticalIndicatorColor: Colors.black26,
-          showVerticalIndicator: true,
-          backgroundColor: Colors.black87,
-          snap: false,
-          bubbleIndicatorColor: Colors.red,
-          displayLinesXAxis: true,
-          displayYAxis: true,
-          xLinesColor: Colors.deepOrange,
-          updatePositionOnTap: true,
+LineChartData sampleData1() {
+  return LineChartData(
+    lineTouchData: LineTouchData(
+      touchTooltipData: LineTouchTooltipData(
+        tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+      ),
+      touchCallback: (LineTouchResponse touchResponse) {},
+      handleBuiltInTouches: true,
+    ),
+    gridData: FlGridData(
+      show: false,
+    ),
+    titlesData: FlTitlesData(
+      bottomTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 22,
+        textStyle: const TextStyle(
+          color: Color(0xff72719b),
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+        margin: 10,
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 2:
+              return 'SEPT';
+            case 7:
+              return 'OCT';
+            case 12:
+              return 'DEC';
+          }
+          return '';
+        },
+      ),
+      leftTitles: SideTitles(
+        showTitles: true,
+        textStyle: const TextStyle(
+          color: Color(0xff75729e),
+          fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 1:
+              return '1m';
+            case 2:
+              return '2m';
+            case 3:
+              return '3m';
+            case 4:
+              return '5m';
+          }
+          return '';
+        },
+        margin: 8,
+        reservedSize: 30,
+      ),
+    ),
+    borderData: FlBorderData(
+      show: true,
+      border: const Border(
+        bottom: BorderSide(
+          color: Color(0xff4e4965),
+          width: 4,
+        ),
+        left: BorderSide(
+          color: Colors.blue,
+        ),
+        right: BorderSide(
+          color: Colors.transparent,
+        ),
+        top: BorderSide(
+          color: Colors.transparent,
         ),
       ),
     ),
+    minX: 0,
+    maxX: 14,
+    maxY: 4,
+    minY: 0,
+    lineBarsData: linesBarData1(),
   );
+}
+
+List<LineChartBarData> linesBarData1() {
+  final LineChartBarData lineChartBarData1 = LineChartBarData(
+    spots: [
+      FlSpot(1, 1),
+      FlSpot(3, 1.5),
+      FlSpot(5, 1.4),
+      FlSpot(7, 3.4),
+      FlSpot(10, 2),
+      FlSpot(12, 2.2),
+      FlSpot(14, 1.8),
+    ],
+    isCurved: true,
+    colors: [
+      Colors.blue,
+    ],
+    barWidth: 6,
+    isStrokeCapRound: true,
+    dotData: FlDotData(
+      show: false,
+    ),
+    belowBarData: BarAreaData(
+      show: false,
+    ),
+  );
+  return [
+    lineChartBarData1,
+  ];
 }
