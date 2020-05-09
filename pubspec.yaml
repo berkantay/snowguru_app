@@ -19,6 +19,8 @@ environment:
 dependencies:
   curved_navigation_bar:
   weather_icons: 1.0.1
+  bezier_chart: "^1.0.16"
+  fl_chart: ^0.9.4
   flutter:
     sdk: flutter
 

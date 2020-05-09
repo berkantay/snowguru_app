@@ -29,7 +29,7 @@ class CustomHomePage extends StatelessWidget {
       bottomNavigationBar: CurvedNavigationBar(
         height: 50,
         index: 1,
-        color: Colors.red,
+        color: Colors.black87,
         backgroundColor: Colors.white,
         buttonBackgroundColor: Colors.lightBlueAccent,
         items: <Widget>[
