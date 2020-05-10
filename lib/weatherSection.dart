@@ -23,8 +23,8 @@ class WeatherSection extends StatelessWidget {
                           flex: 3,
                           child: Icon(
                             WeatherIcons.snow,
-                            size: 60.0,
-                            color: Colors.blue,
+                            size: 50,
+                            color: Colors.blue, //put a gif instead
                           ),
                         ),
                         Expanded(

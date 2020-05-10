@@ -48,7 +48,7 @@ flutter:
   assets:
    - img/top.jpg
    - img/top_banner.jpg
-   - img/sun.png
+   - img/Blizzard.gif
    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
