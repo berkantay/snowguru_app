@@ -18,7 +18,7 @@ class CircuitSection extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: Container(
-                        color: Colors.white,
+                        color: Colors.transparent,
                         child: Row(
                           children: <Widget>[
                             Expanded(

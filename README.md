@@ -7,6 +7,6 @@ deploy date is **05.01.2021**.
 
 Following picture provides the layout of the main page for now.
 
-<img src="screenshots/Screenshot_1589112259.png" width="200">
+<img src="screenshots/Screenshot_1589222331.png" width="200">
 
 Any suggestions and contributions are welcomed.

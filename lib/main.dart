@@ -2,7 +2,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:temp_app/circuitSection.dart';
 import 'package:temp_app/skiMapSection.dart';
 import 'package:temp_app/weatherSection.dart';
-import 'package:weather_icons/weather_icons.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -47,8 +46,8 @@ class CustomHomePage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               WeatherSection(),
+              SkiMapSection(),
               CircuitSection(),
-              SkiMapSection()
             ],
           ),
         ),
