@@ -16,7 +16,7 @@ class SkiMapSection extends StatelessWidget {
         layers: [
           new TileLayerOptions(
               urlTemplate:
-                  "https://snowmap.fast-sfc.com/pistes/{z}/{x}/{y}.png", //change base_snow_map to pistes
+                  "https://snowmap.fast-sfc.com/base_snow_map/{z}/{x}/{y}.png", //change base_snow_map to pistes
               subdomains: ['a', 'b', 'c'])
         ],
       ),
