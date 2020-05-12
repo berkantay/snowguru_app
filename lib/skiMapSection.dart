@@ -10,12 +10,13 @@ class SkiMapSection extends StatelessWidget {
     return Expanded(
       child: new FlutterMap(
         options: new MapOptions(
-          minZoom: 10.0,
+          minZoom: 0.0,
           center: LatLng(40.71, -74.00),
         ),
         layers: [
           new TileLayerOptions(
-              urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              urlTemplate:
+                  "https://tiles.opensnowmap.org/pistes/{z}/{x}/{y}.png",
               subdomains: ['a', 'b', 'c'])
         ],
       ),
