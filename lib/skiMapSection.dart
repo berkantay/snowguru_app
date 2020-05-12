@@ -14,10 +14,18 @@ class SkiMapSection extends StatelessWidget {
           minZoom: 10.0,
         ),
         layers: [
-          new TileLayerOptions(
+          TileLayerOptions(
+            urlTemplate:
+                "https://snowmap.fast-sfc.com/base_snow_map/{z}/{x}/{y}.png",
+            //change base_snow_map to pistes
+            subdomains: ['a', 'b', 'c'],
+          ),
+          TileLayerOptions(
               urlTemplate:
-                  "https://snowmap.fast-sfc.com/base_snow_map/{z}/{x}/{y}.png", //change base_snow_map to pistes
-              subdomains: ['a', 'b', 'c'])
+                  "https://snowmap.fast-sfc.com/pistes/{z}/{x}/{y}.png",
+              //change base_snow_map to pistes
+              subdomains: ['a', 'b', 'c'],
+              backgroundColor: Colors.transparent),
         ],
       ),
     );
