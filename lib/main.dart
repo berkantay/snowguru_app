@@ -45,8 +45,8 @@ class CustomHomePage extends StatelessWidget {
           flex: 1,
           child: Column(
             children: <Widget>[
-              WeatherSection(),
               SkiMapSection(),
+              WeatherSection(),
               CircuitSection(),
             ],
           ),
