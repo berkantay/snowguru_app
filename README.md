@@ -6,7 +6,9 @@ deploy date is **05.01.2021**.
 **STAY TUNED**
 
 Following picture provides the layout of the main page for now.
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](screenshots/Screenshot_1589281508.png)  |  ![](screenshots/Screenshot_1589281508.png)
 
-<img src="screenshots/Screenshot_1589281508.png" width="200">
 
 Any suggestions and contributions are welcomed.

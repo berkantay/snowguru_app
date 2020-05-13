@@ -1,4 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:temp_app/circuitSection.dart';
 import 'package:temp_app/skiMapSection.dart';
 import 'package:temp_app/weatherSection.dart';
@@ -24,7 +26,7 @@ class CustomHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: _getCustomAppBar(),
+      appBar: MountainAppBar(),
       bottomNavigationBar: CurvedNavigationBar(
         height: 50,
         index: 1,
@@ -56,13 +58,15 @@ class CustomHomePage extends StatelessWidget {
   }
 }
 
-_getCustomAppBar() {
-  return PreferredSize(
-      preferredSize: Size.fromHeight(55),
+class MountainAppBar extends StatelessWidget with PreferredSizeWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100.0,
+      color: Colors.red,
       child: Stack(
         children: <Widget>[
           Container(
-            // color: Colors.red,
             alignment: Alignment.bottomCenter,
             decoration: BoxDecoration(
               image: new DecorationImage(
@@ -73,10 +77,6 @@ _getCustomAppBar() {
                 new BoxShadow(color: Color(0xFF030513), blurRadius: 3.0)
               ],
             ),
-          ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            //color: const Color(0xFF030513).withOpacity(0.3),
           ),
           Container(
             alignment: Alignment.center,
@@ -95,7 +95,73 @@ _getCustomAppBar() {
                 ),
               ],
             ),
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: EdgeInsets.only(
+                right: 5.0,
+              ),
+              child: FloatingActionButton(
+                splashColor: Colors.redAccent,
+                backgroundColor: Colors.transparent,
+                child: Icon(
+                  Icons.info,
+                  size: 35.0,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  _onAlertWithStylePressed(context);
+                },
+              ),
+            ),
           )
         ],
-      ));
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+}
+
+_onAlertWithStylePressed(context) {
+  // Reusable alert style
+  var alertStyle = AlertStyle(
+    backgroundColor: Colors.redAccent,
+    animationType: AnimationType.fromTop,
+    isCloseButton: false,
+    isOverlayTapDismiss: false,
+    descStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+    animationDuration: Duration(milliseconds: 400),
+    alertBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10.0),
+      side: BorderSide(
+        color: Colors.black87,
+      ),
+    ),
+    titleStyle: TextStyle(
+      color: Colors.white,
+    ),
+  );
+
+  // Alert dialog using custom alert style
+  Alert(
+    context: context,
+    style: alertStyle,
+    type: AlertType.none,
+    title: "ACIL DURUM\nNUMARALARI",
+    desc: "Ambulans: 112\nAFAD:122\n",
+    buttons: [
+      DialogButton(
+        child: Text(
+          "ARA",
+          style: TextStyle(color: Colors.black87, fontSize: 20),
+        ),
+        onPressed: () => Navigator.pop(context),
+        color: Colors.white,
+        radius: BorderRadius.circular(10.0),
+      ),
+    ],
+  ).show();
 }

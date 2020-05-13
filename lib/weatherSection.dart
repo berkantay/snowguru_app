@@ -36,9 +36,10 @@ class WeatherSection extends StatelessWidget {
                             child: Text(
                               '-1\u00b0 Celcius',
                               style: const TextStyle(
-                                  color: Color(0xff68737d),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
+                                color: Color(0xff68737d),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ),

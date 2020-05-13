@@ -1,36 +1,58 @@
 
 _getCustomAppBar() {
   return PreferredSize(
-    preferredSize: Size.fromHeight(50),
-    child: Container(
-      alignment: Alignment.bottomCenter,
-      decoration: BoxDecoration(
-        image: new DecorationImage(
-          image: new AssetImage('img/top_banner.jpg'),
-          fit: BoxFit.cover,
-        ),
-        boxShadow: [new BoxShadow(color: Colors.grey, blurRadius: 10.0)],
-        borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(20.0),
-            bottomRight: Radius.circular(20.0)),
-      ),
-      child: Stack(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.bottomCenter,
-            color: const Color(0xFF030513).withOpacity(0.3),
-          ),
-          new Text(
-            "KARTALKAYA",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 26,
-              fontFamily: 'DancingScript',
+    preferredSize: Size.fromHeight(55),
+    child: Stack(
+      children: <Widget>[
+        Container(
+          alignment: Alignment.bottomCenter,
+          decoration: BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage('img/top_banner.jpg'),
+              fit: BoxFit.cover,
             ),
-            textAlign: TextAlign.center,
+            boxShadow: [
+              new BoxShadow(color: Color(0xFF030513), blurRadius: 3.0)
+            ],
           ),
-        ],
-      ),
+        ),
+        Container(
+          alignment: Alignment.center,
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "KARTALKAYA",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontFamily: 'DancingScript',
+                  letterSpacing: 4,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Padding(
+            padding: EdgeInsets.only(
+              right: 5.0,
+            ),
+            child: FloatingActionButton(
+              splashColor: Colors.redAccent,
+              backgroundColor: Colors.transparent,
+              child: Icon(
+                Icons.info,
+                size: 35.0,
+                color: Colors.white,
+              ),
+              onPressed: () {},
+            ),
+          ),
+        )
+      ],
     ),
   );
 }
