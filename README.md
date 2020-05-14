@@ -12,3 +12,8 @@ Home Page             |  AlertPage
 
 
 Any suggestions and contributions are welcomed.
+
+TODO:
+Bottom navigation bar will be written seperately as a stateful widget.
+Page navigation/routing according to bottom navigation bar.
+Homepage and Ski page will be stateless widgets.

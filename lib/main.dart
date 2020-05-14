@@ -7,7 +7,6 @@ import 'package:temp_app/weatherSection.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  // SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
 
@@ -17,31 +16,51 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: CustomHomePage(),
+      routes: <String, WidgetBuilder>{
+        "/CustomHomePage": (BuildContext context) => new CustomHomePage(),
+      },
     );
   }
 }
 
-class CustomHomePage extends StatelessWidget {
+class CustomHomePage extends StatefulWidget {
+  CustomHomePage({Key key}) : super(key: key);
+
+  @override
+  _CustomHomePageState createState() => _CustomHomePageState();
+}
+
+class _CustomHomePageState extends State<CustomHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: MountainAppBar(),
       bottomNavigationBar: CurvedNavigationBar(
-        height: 50,
-        index: 1,
-        color: Colors.black87,
-        backgroundColor: Colors.white,
-        buttonBackgroundColor: Colors.lightBlueAccent,
-        items: <Widget>[
-          Icon(Icons.verified_user, size: 20, color: Colors.white),
-          Icon(Icons.usb, size: 20, color: Colors.white),
-        ],
-        animationDuration: Duration(
-          milliseconds: 300,
-        ),
-        animationCurve: Curves.easeOutCubic,
-      ),
+          height: 50,
+          index: 0,
+          color: Colors.black87,
+          backgroundColor: Colors.white,
+          buttonBackgroundColor: Colors.lightBlueAccent,
+          items: <Widget>[
+            Icon(
+              Icons.verified_user,
+              size: 20,
+              color: Colors.white,
+            ),
+            Icon(
+              Icons.usb,
+              size: 20,
+              color: Colors.white,
+            ),
+          ],
+          animationDuration: Duration(
+            milliseconds: 300,
+          ),
+          animationCurve: Curves.easeOutCubic,
+          onTap: (index) {
+            print(index);
+          }),
       body: Column(children: <Widget>[
         Expanded(
           flex: 1,
@@ -106,7 +125,7 @@ class MountainAppBar extends StatelessWidget with PreferredSizeWidget {
                 splashColor: Colors.redAccent,
                 backgroundColor: Colors.transparent,
                 child: Icon(
-                  Icons.info,
+                  Icons.warning,
                   size: 35.0,
                   color: Colors.white,
                 ),
@@ -164,4 +183,18 @@ _onAlertWithStylePressed(context) {
       ),
     ],
   ).show();
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.yellowAccent,
+      child: Center(
+        child: Text('data'),
+      ),
+    );
+  }
 }
