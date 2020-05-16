@@ -16,9 +16,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: CustomHomePage(),
-      routes: <String, WidgetBuilder>{
-        "/CustomHomePage": (BuildContext context) => new CustomHomePage(),
-      },
     );
   }
 }
@@ -31,48 +28,53 @@ class CustomHomePage extends StatefulWidget {
 }
 
 class _CustomHomePageState extends State<CustomHomePage> {
+  int page = 0;
+
+  Widget callPage(int index) {
+    switch (index) {
+      case 0:
+        return FirstPage();
+        break;
+      case 1:
+        return SecondPage();
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: MountainAppBar(),
+      body: callPage(page),
       bottomNavigationBar: CurvedNavigationBar(
-          height: 50,
-          index: 0,
-          color: Colors.black87,
-          backgroundColor: Colors.white,
-          buttonBackgroundColor: Colors.lightBlueAccent,
-          items: <Widget>[
-            Icon(
-              Icons.verified_user,
-              size: 20,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.usb,
-              size: 20,
-              color: Colors.white,
-            ),
-          ],
-          animationDuration: Duration(
-            milliseconds: 300,
+        height: 50,
+        index: 0,
+        color: Colors.black87,
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Colors.lightBlueAccent,
+        items: <Widget>[
+          Icon(
+            Icons.verified_user,
+            size: 20,
+            color: Colors.white,
           ),
-          animationCurve: Curves.easeOutCubic,
-          onTap: (index) {
-            print(index);
-          }),
-      body: Column(children: <Widget>[
-        Expanded(
-          flex: 1,
-          child: Column(
-            children: <Widget>[
-              SkiMapSection(),
-              WeatherSection(),
-              CircuitSection(),
-            ],
+          Icon(
+            Icons.usb,
+            size: 20,
+            color: Colors.white,
           ),
+        ],
+        animationDuration: Duration(
+          milliseconds: 300,
         ),
-      ]),
+        animationCurve: Curves.easeOutCubic,
+        onTap: (index) {
+          setState(() {
+            page = index;
+          });
+        },
+      ),
     );
   }
 }
@@ -191,9 +193,31 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.yellowAccent,
-      child: Center(
-        child: Text('data'),
+      color: Colors.red,
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  const FirstPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: <Widget>[
+                SkiMapSection(),
+                WeatherSection(),
+                CircuitSection(),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
