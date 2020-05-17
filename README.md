@@ -8,7 +8,7 @@ deploy date is **05.01.2021**.
 Following picture provides the layout of the main page for now.
 Home Page             |  Alert Page       |  Ski Data Page
 :-------------------------:|:-------------------------:|:-------------------------:
-![](screenshots/Screenshot_1589366136.png)  |  ![](screenshots/Screenshot_1589366132.png)|  ![](screenshots/Screenshot_1589652801.png)
+![](screenshots/Screenshot_1589728969.png)  |  ![](screenshots/Screenshot_1589729002.png)|  ![](screenshots/Screenshot_1589728898.png)
 
 
 Any suggestions and contributions are welcomed.

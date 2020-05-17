@@ -5,6 +5,7 @@ import 'package:temp_app/circuitSection.dart';
 import 'package:temp_app/skiMapSection.dart';
 import 'package:temp_app/weatherSection.dart';
 import 'package:flutter/material.dart';
+import 'package:temp_app/skiPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +37,7 @@ class _CustomHomePageState extends State<CustomHomePage> {
         return FirstPage();
         break;
       case 1:
-        return SecondPage();
+        return SkiPage();
         break;
     }
   }
@@ -149,7 +150,7 @@ class MountainAppBar extends StatelessWidget with PreferredSizeWidget {
 _onAlertWithStylePressed(context) {
   // Reusable alert style
   var alertStyle = AlertStyle(
-    backgroundColor: Colors.redAccent,
+    backgroundColor: Colors.blueAccent,
     animationType: AnimationType.fromTop,
     isCloseButton: false,
     isOverlayTapDismiss: false,
@@ -172,30 +173,30 @@ _onAlertWithStylePressed(context) {
     style: alertStyle,
     type: AlertType.none,
     title: "ACIL DURUM\nNUMARALARI",
-    desc: "Ambulans: 112\nAFAD:122\n",
+    desc: "AFAD:122\n",
     buttons: [
       DialogButton(
         child: Text(
           "ARA",
-          style: TextStyle(color: Colors.black87, fontSize: 20),
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        onPressed: () => print('call'),
+        color: Colors.green,
+        radius: BorderRadius.circular(10.0),
+      ),
+      DialogButton(
+        child: Text(
+          "KAPAT",
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         onPressed: () => Navigator.pop(context),
-        color: Colors.white,
+        color: Colors.redAccent,
         radius: BorderRadius.circular(10.0),
       ),
     ],
   ).show();
-}
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
-    );
-  }
 }
 
 class FirstPage extends StatelessWidget {
