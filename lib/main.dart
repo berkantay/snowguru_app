@@ -1,9 +1,7 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:temp_app/circuitSection.dart';
+import 'package:temp_app/floatingMenu.dart';
 import 'package:temp_app/skiMapSection.dart';
-import 'package:temp_app/weatherSection.dart';
 import 'package:flutter/material.dart';
 import 'package:temp_app/skiPage.dart';
 
@@ -50,6 +48,7 @@ class _CustomHomePageState extends State<CustomHomePage> {
       backgroundColor: Colors.white,
       appBar: MountainAppBar(),
       body: FirstPage(),
+      floatingActionButton: FloatingMenu(),
     );
   }
 }
