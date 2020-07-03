@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  unicorndial: ^1.1.5
   curved_navigation_bar:
   weather_icons: 1.0.1
   bezier_chart: "^1.0.16"

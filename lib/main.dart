@@ -7,6 +7,8 @@ import 'package:temp_app/weatherSection.dart';
 import 'package:flutter/material.dart';
 import 'package:temp_app/skiPage.dart';
 
+import 'skiMapSection.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -47,35 +49,7 @@ class _CustomHomePageState extends State<CustomHomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: MountainAppBar(),
-      body: callPage(page),
-      bottomNavigationBar: CurvedNavigationBar(
-        height: 50,
-        index: 0,
-        color: Colors.black87,
-        backgroundColor: Colors.white,
-        buttonBackgroundColor: Colors.lightBlueAccent,
-        items: <Widget>[
-          Icon(
-            Icons.verified_user,
-            size: 20,
-            color: Colors.white,
-          ),
-          Icon(
-            Icons.usb,
-            size: 20,
-            color: Colors.white,
-          ),
-        ],
-        animationDuration: Duration(
-          milliseconds: 300,
-        ),
-        animationCurve: Curves.easeOutCubic,
-        onTap: (index) {
-          setState(() {
-            page = index;
-          });
-        },
-      ),
+      body: FirstPage(),
     );
   }
 }
@@ -208,16 +182,7 @@ class FirstPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Column(
-              children: <Widget>[
-                SkiMapSection(),
-                WeatherSection(),
-                CircuitSection(),
-              ],
-            ),
-          ),
+          SkiMapSection(),
         ],
       ),
     );
